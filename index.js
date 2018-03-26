@@ -16,7 +16,7 @@ require('https').createServer({
 });
 
 app.get('/', (req, res) => {
-    res.sendFile('index.html');
+    res.sendFile('./index.html');
 });
 
 app.get('/restart', (req, res) => {
