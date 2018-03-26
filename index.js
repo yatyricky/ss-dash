@@ -1,12 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const cmd = require('child_process').exec;
-
-const config = {
-    PORT: 443,
-    key: 'key.pem',
-    cert: 'cert.pem'
-};
+const config = require('./config');
 
 const app = require('express')();
 
