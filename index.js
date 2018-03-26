@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const cmd = require('child_process').exec;
 
 const config = {
     PORT: 443,
@@ -21,8 +22,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/restart', (req, res) => {
-    console.log('invoked');
-    res.sendStatus(200);
+    cmd('systemctl restart azczczczczzcczczc', (err, stdout, stderr) => {
+        if (err) {
+            res.sendStatus(200, err);
+        } else {
+            res.send(200, {
+                out: stdout,
+                err: stderr
+            });
+        }
+    });
 });
 
 app.get('*', (req, res) => {
