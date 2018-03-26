@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const config = {
     PORT: 443,
@@ -16,7 +17,7 @@ require('https').createServer({
 });
 
 app.get('/', (req, res) => {
-    res.sendFile('./index.html');
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/restart', (req, res) => {
