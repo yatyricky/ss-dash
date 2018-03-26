@@ -17,7 +17,19 @@ const resp = document.getElementById("resp");
 startButton.onclick = (e) => {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/restart");
+    xhr.onload = () => {
+        startButton.disabled = false;
+        if (xhr.status === 200) {
+            console.log(xhr.response);
+            resp.innerText = "Done";
+        } else {
+            console.log(xhr.status);
+            resp.innerText = "Network failed, please try again";
+        }
+    };
     xhr.send();
+
+    startButton.disabled = true;
 };
 
 </script>
