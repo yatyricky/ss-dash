@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.get('/restart', (req, res) => {
     console.log('invoked');
+    res.sendStatus(200);
 });
 
 app.get('*', (req, res) => {
