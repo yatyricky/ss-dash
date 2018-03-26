@@ -16,5 +16,13 @@ require('https').createServer({
 });
 
 app.get('/', (req, res) => {
-    res.send('asd');
+    res.sendFile('index.html');
+});
+
+app.get('/restart', (req, res) => {
+    console.log('invoked');
+});
+
+app.get('*', (req, res) => {
+    res.redirect('/');
 });
