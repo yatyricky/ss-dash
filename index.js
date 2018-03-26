@@ -22,14 +22,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/restart', (req, res) => {
-    cmd('systemctl restart azczczczczzcczczc', (err, stdout, stderr) => {
+    cmd('systemctl restart shadowsocks-libev', (err, stdout, stderr) => {
         if (err) {
-            res.sendStatus(200, err);
+            res.status(200).send('fail');
         } else {
-            res.send(200, {
-                out: stdout,
-                err: stderr
-            });
+            res.status(200).send('success');
         }
     });
 });

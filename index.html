@@ -20,8 +20,11 @@ startButton.onclick = (e) => {
     xhr.onload = () => {
         startButton.disabled = false;
         if (xhr.status === 200) {
-            console.log(xhr.response);
-            resp.innerText = "Done";
+            if (xhr.responseText == 'fail') {
+                resp.innerText = "Please try again";
+	    } else {
+                resp.innerText = "Done";
+            }
         } else {
             console.log(xhr.status);
             resp.innerText = "Network failed, please try again";
