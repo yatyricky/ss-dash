@@ -11,13 +11,13 @@
 <div id="resp"></div>
 
 <script type="text/javascript">
-const startButton = document.getElementById("startButton");
-const resp = document.getElementById("resp");
+var startButton = document.getElementById("startButton");
+var resp = document.getElementById("resp");
 
-startButton.onclick = (e) => {
+startButton.onclick = function(e) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "/restart");
-    xhr.onload = () => {
+    xhr.onload = function() {
         startButton.disabled = false;
         if (xhr.status === 200) {
             if (xhr.responseText == 'fail') {
