@@ -22,16 +22,18 @@ startButton.onclick = function(e) {
         if (xhr.status === 200) {
             if (xhr.responseText == 'fail') {
                 resp.innerText = "Please try again";
-	    } else {
+            } else {
                 resp.innerText = "Done";
             }
         } else {
-            console.log(xhr.status);
-            resp.innerText = "Network failed, please try again";
+            resp.innerText = "Error " + xhr.status + " please try again";
         }
     };
+    xhr.onerror = function() {
+        startButton.disabled = false;
+        resp.innerText = "Error " + xhr.status + " please try again";
+    }
     xhr.send();
-
     startButton.disabled = true;
 };
 
